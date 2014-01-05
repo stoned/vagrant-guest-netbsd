@@ -26,7 +26,7 @@ Add something like the following to your `Vagrantfile`
       # And note that a private network with static IP
       # is required for the virtualbox provider
       config.vm.network :private_network, ip: "192.168.33.10"
-      config.vm.synced_folder "/some/host/pathname", "/vagrant", type: "nfs"
+      config.vm.synced_folder "/some/host/pathname", "/vagrant", :nfs => true
     end
 
 
