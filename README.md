@@ -1,4 +1,4 @@
-# Vagrant::Guests::Netbsd
+# Vagrant::Guest::Netbsd
 
 This plugin allows you to run NetBSD under [Vagrant][vagrant].
 
