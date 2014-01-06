@@ -1,5 +1,8 @@
 # Vagrant::Guest::Netbsd
 
+<span class="badges">
+[![Gem Version](https://badge.fury.io/rb/vagrant-guest-netbsd.png)][gem]</span>
+
 This plugin allows you to run NetBSD under [Vagrant][vagrant].
 
 This Vagrant plugin had only been tested with Vagrant version 1.3.5
@@ -39,4 +42,5 @@ Add something like the following to your `Vagrantfile`
 5. Create new Pull Request
 
 
+[gem]: http://badge.fury.io/rb/vagrant-guest-netbsd
 [vagrant]: http://www.vagrantup.com/ "Vagrant"
