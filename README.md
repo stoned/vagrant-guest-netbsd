@@ -5,7 +5,7 @@
 
 This plugin allows you to run NetBSD under [Vagrant][vagrant].
 
-This Vagrant plugin had only been tested with Vagrant version 1.3.5
+It had been tested with Vagrant version 1.3.5 and 1.4.2.
 
 Please report any issue you will encounter.
 
@@ -14,6 +14,25 @@ Please report any issue you will encounter.
 
     $ vagrant plugin install vagrant-guest-netbsd
 
+## Known limitations with the VirtualBox provider
+
+### Synced folders
+
+VirtualBox shared folders are not supported as VirtualBox Guest Additions
+are not available for NetBSD.
+
+But Vagrant NFS synced folders are available.
+
+It should be noted that a private ("host-only") network between the
+virtualbox guest and the host must be setup to use NFS synced
+folders.  The guest must also use a static IP adress in this network,
+specified in the Vagrantfile.
+
+This is required for Vagrant before version 1.4. This limitation
+was removed in Vagrant 1.4 but as VirtualBox Guest Additions are
+not available for NetBSD, Vagrant cannot find out the guest's address
+in this network. So a static IP address in the private network is
+required, no matter the version of Vagrant used.
 
 ## Usage
 
@@ -24,12 +43,11 @@ Add something like the following to your `Vagrantfile`
   
     Vagrant.configure("2") do |config|
       
-      # Only NFS synced folder is supported
-      #
-      # And note that a private network with static IP
-      # is required for the virtualbox provider
+      # Only NFS synced folder are supported.
+      # And note that a private network with static IP is required
       config.vm.network :private_network, ip: "192.168.33.10"
       config.vm.synced_folder "/some/host/pathname", "/vagrant", :nfs => true
+
     end
 
 
